@@ -28,8 +28,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DESCRIPTION     t.m.k. keyboard firmware for Toshiba MSX HX-10
 
 /* key matrix size */
-#define MATRIX_ROWS 7
-#define MATRIX_COLS 11
+#define MATRIX_ROWS 8
+#define MATRIX_COLS 9
 
 /* define if matrix has ghost */
 //#define MATRIX_HAS_GHOST

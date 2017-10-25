@@ -14,3 +14,8 @@ build/
 .DS_Store
 !converter/*/binary/*.hex
 !keyboard/*/binary/*.hex
+
+*.iml
+*.ipr
+*.iws
+.idea

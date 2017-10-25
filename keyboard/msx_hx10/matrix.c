@@ -46,6 +46,10 @@ uint8_t matrix_cols(void)
 
 void matrix_init(void)
 {
+    debug_enable   =true;
+    debug_matrix   =true;
+    debug_keyboard =true;
+
     // To use PORTF disable JTAG with writing JTD bit twice within four cycles.
     MCUCR |= (1<<JTD);
     MCUCR |= (1<<JTD);
@@ -154,16 +158,14 @@ static uint8_t read_rows(void)
 }
 
 /* Column pin config
-  * col: 0  1  2  3  4  5  6  7  8  9  10
-  * pin: C7 C6 C5 C4 C3 C2 C1 C0 E1 E0 D7
+  * col: 0  1  2  3  4  5  6  7  8
+  * pin: C7 C6 C5 C4 C3 C2 C1 C0 E1
  */
 static void unselect_cols(void)
 {
     // Hi-Z(DDR:0, PORT:0) to unselect
-    DDRD  |= 0b10000000; // PD: 7
-    PORTD |= 0b10000000;
-    DDRE  |= 0b00000011; // PE: 1 0
-    PORTE |= 0b00000011;
+    DDRE  |= 0b00000010; // PE: 1 0
+    PORTE |= 0b00000010;
     DDRC  |= 0b11111111; // PC: 7 6 5 4 3 2 1 0
     PORTC |= 0b11111111;
 }
@@ -172,19 +174,19 @@ static void select_col(uint8_t col)
 {
     // Output low(DDR:1, PORT:0) to select
     switch (col) {
-        case 0:
+        case 8:
             DDRC  |= (1<<7);
             PORTC &= ~(1<<7);
             break;
-        case 1:
+        case 7:
             DDRC  |= (1<<6);
             PORTC &= ~(1<<6);
             break;
-        case 2:
+        case 6:
             DDRC  |= (1<<5);
             PORTC &= ~(1<<5);
             break;
-        case 3:
+        case 5:
             DDRC  |= (1<<4);
             PORTC &= ~(1<<4);
             break;
@@ -192,29 +194,21 @@ static void select_col(uint8_t col)
             DDRC  |= (1<<3);
             PORTC &= ~(1<<3);
             break;
-        case 5:
+        case 3:
             DDRC  |= (1<<2);
             PORTC &= ~(1<<2);
             break;
-        case 6:
+        case 2:
             DDRC  |= (1<<1);
             PORTC &= ~(1<<1);
             break;
-        case 7:
+        case 1:
             DDRC  |= (1<<0);
             PORTC &= ~(1<<0);
             break;
-        case 8:
+        case 0:
             DDRE  |= (1<<1);
             PORTE &= ~(1<<1);
-            break;
-        case 9:
-            DDRE  |= (1<<0);
-            PORTE &= ~(1<<0);
-            break;
-        case 10:
-            DDRD  |= (1<<7);
-            PORTD &= ~(1<<7);
             break;
     }
 }
