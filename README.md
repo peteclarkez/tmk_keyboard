@@ -4,6 +4,11 @@ This repository includes keyboard and converter firmware projects built with [`t
 
 The latest source code is available here: <http://github.com/tmk/tmk_keyboard>
 
+#### peteclarkez Changes
+I forked this repository to create a keyboard controller for a Toshiba MSX HX-10
+This can be found here: -
+* [msx_hx10](keyboard/msx_hx10/)                  
+
 
 Updates
 -------
