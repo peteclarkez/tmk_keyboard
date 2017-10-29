@@ -1,5 +1,5 @@
 /*
-Copyright 2012,2013 Jun Wako <wakojun@gmail.com>
+Copyright 2017 Peter Clarke <pete@clarkez.co.uk>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -14,19 +14,10 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <stdint.h>
-#include <stdbool.h>
-#include "keycode.h"
-#include "action.h"
-#include "action_macro.h"
-#include "report.h"
-#include "host.h"
-#include "print.h"
-#include "debug.h"
-#include "keymap.h"
+#include "keymap_common.h"
 
 /*
-  //http://problemkaputt.de/portar.htm
+  //
   https://www.msx.org/forum/msx-talk/openmsx/rpilinux-keymapping
   Line  Bit_7 Bit_6 Bit_5 Bit_4 Bit_3 Bit_2 Bit_1 Bit_0
    0     "7"   "6"   "5"   "4"   "3"   "2"   "1"   "0"
@@ -55,21 +46,30 @@ Bit_1 "1" "9" "'" "D" "L" "T" CTRL  F5   HOME
 Bit_0 "0" "8" "`" "C" "K" "S" SHIFT F4   SPACE
 */
 
+
 const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    {
-    {KC_7,KC_SCOLON,   KC_B,     KC_J,KC_R,KC_Z,KC_F3,       KC_ENTER,  KC_RIGHT},
-    {KC_6,KC_RBRACKET, KC_A,     KC_I,KC_Q,KC_Y,KC_F2,       KC_NO,     KC_DOWN},
-    {KC_5,KC_LBRACKET, KC_NO,    KC_H,KC_P,KC_X,KC_F1,       KC_BSPACE, KC_UP},
-    {KC_4,KC_BSLASH,   KC_SLASH, KC_G,KC_O,KC_W,KC_NO,       KC_NO,     KC_LEFT},
-    {KC_3,KC_EQUAL,    KC_DOT,   KC_F,KC_N,KC_V,KC_CAPSLOCK, KC_TAB,    KC_DEL},
-    {KC_2,KC_MINUS,    KC_COMMA, KC_E,KC_M,KC_U,KC_NO,       KC_ESC,    KC_INS},
-    {KC_1,KC_9,        KC_QUOTE, KC_D,KC_L,KC_T,KC_LCTRL,     KC_F5,     KC_HOME},
-    {KC_0,KC_8,        KC_NO,    KC_C,KC_K,KC_S,KC_LSHIFT,    KC_F4,     KC_SPACE}
-    },
+ /* 0 Qwerty */
+     KEYMAP(7, SCLN,   B,    J,R,Z, F3,     ENT,   RIGHT , \
+            6, RBRC,   A,    I,Q,Y, F2,     END,   DOWN, \
+            5, LBRC,   FN0,  H,P,X, F1,     BSPC,  UP, \
+            4, NUBS,   SLSH, G,O,W, LGUI,   F6,    LEFT, \
+            3, EQL,    DOT,  F,N,V, CAPS,   TAB,   DEL, \
+            2, MINS,   COMM, E,M,U, LALT,   ESC,   INS, \
+            1, 9,      GRV,  D,L,T, LCTRL,  F5,    HOME, \
+            0, 8,      QUOT, C,K,S, LSHIFT, F4,    SPC),
+ /* 1 Functions */
+     KEYMAP(TRNS, TRNS,   TRNS, TRNS,TRNS,TRNS, F9,   TRNS, TRNS , \
+            TRNS, TRNS,   TRNS, TRNS,TRNS,TRNS, F8,   TRNS, PGDOWN, \
+            TRNS, TRNS,   TRNS, TRNS,TRNS,TRNS, F7,   TRNS, PGUP, \
+            TRNS, TRNS,   TRNS, TRNS,TRNS,TRNS, RGUI, F12,  TRNS, \
+            TRNS, TRNS,   TRNS, TRNS,TRNS,TRNS, TRNS, TRNS, PGUP, \
+            TRNS, TRNS,   TRNS, TRNS,TRNS,PGUP, TRNS, TRNS, PSCR, \
+            TRNS, TRNS,   NUHS, PGDOWN,TRNS,TRNS, TRNS, F11,  PGDOWN, \
+            TRNS, TRNS,   TRNS, TRNS,TRNS,TRNS, TRNS, F10,  TRNS)
+
+
 };
 
-/*
- * Fn action definition
- */
 const action_t PROGMEM fn_actions[] = {
+    [0] = ACTION_LAYER_MOMENTARY(1),
 };

@@ -1,10 +1,8 @@
-/* Copyright 2012 Jun Wako <wakojun@gmail.com>
+/* Copyright 2017 Peter Clarke <pete@clarkez.co.uk>
  *
- * This is heavily based on phantom/board.{c|h}.
- * https://github.com/BathroomEpiphanies/AVR-Keyboard
+ * This is heavily based on gh60.
  *
- * Copyright (c) 2012 Fredrik Atmer, Bathroom Epiphanies Inc
- * http://bathroomepiphanies.com
+ * Copyright 2012 Jun Wako <wakojun@gmail.com>
  *
  * As for liscensing consult with the original files or its author.
  */

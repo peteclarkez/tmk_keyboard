@@ -3,7 +3,6 @@ Toshiba MSX HX-10
 #### TODO
 
  - Fix non working keys (E G CAP BS RIGHT)
- - Add Layers to cover missing keys (F6-12,WIN,ALT, End, PgUP, PgDn)
  - Tidy up Debounce
  - Add LEDs for power / Caps
   
@@ -27,7 +26,9 @@ Toshiba MSX HX-10
  * [keyboard fix](http://www.nightfallcrew.com/16/12/2015/toshiba-hx-10-64k-msx-keyboard-pad-fix/)
  
   
- * [TMK Tutorial](https://deskthority.net/workshop-f7/how-to-build-your-very-own-keyboard-firmware-t7177.html#p141386)
+ * [TMK Tutorial 1](https://deskthority.net/workshop-f7/how-to-build-your-very-own-keyboard-firmware-t7177.html)
+ * [TMK Tutorial 2](https://deskthority.net/workshop-f7/how-to-build-your-very-own-keyboard-firmware-t7177.html#p141386)
+
  * [ModelM TMK Keyboard](https://github.com/lmorchard/tmk_keyboard/tree/bdde5f9413ce5c3ea627f201b04f04fe371806ce/keyboard/modelm)
  * [HID Listen for Debug](/ekmps/shops/ultracabs/images/standard-joystick-set-with-mixed-pushbuttons.-90-p.jpg)
  
