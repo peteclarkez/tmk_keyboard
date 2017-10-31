@@ -19,7 +19,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "stdint.h"
 #include "led.h"
 
+#include "print.h"
+#include "debug.h"
 
 void led_set(uint8_t usb_led)
 {
+    dprint("usb_led!: ");
+    dprintf("%02X", usb_led);
+
+    if (usb_led & (1<<USB_LED_CAPS_LOCK)) {
+        // output low
+        dprintf(" CAPS ON ");
+        DDRD |= (1<<0);
+        PORTD |= (1<<0);
+    } else {
+        dprintf(" CAPS OFF ");
+        // Hi-Z
+        DDRD |= (1<<0);
+        PORTD &= ~(1<<0);
+    }
+    dprintln();
+
 }
