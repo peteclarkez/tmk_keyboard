@@ -31,12 +31,12 @@ void led_set(uint8_t usb_led)
         // output low
         dprintf(" CAPS ON ");
         DDRD |= (1<<0);
-        PORTD |= (1<<0);
+        PORTD &= ~(1<<0);
     } else {
         dprintf(" CAPS OFF ");
         // Hi-Z
         DDRD |= (1<<0);
-        PORTD &= ~(1<<0);
+        PORTD |= (1<<0);
     }
     dprintln();
 
